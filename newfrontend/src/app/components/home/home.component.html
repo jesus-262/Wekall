@@ -1,0 +1,44 @@
+
+<br>
+<br>
+<div class="col-md-8 mx-auto">
+    <h1>Top 10 de recetas</h1>
+</div>
+
+<br>
+<br>
+<div class="container">
+  <div class="row" style="float: left;">   
+    <div class="card-group mt-3 " *ngFor="let r of this.home | pipee; index as i "> 
+      
+      <div class="card text-center border-info"  >
+        <div class="card-body">
+          <img src="{{ r.imagen }} " class="card-img-top" style=" width: 200px; height: 200px; float: left;" >
+          <h1 class="card-title">Titulo </h1><p class="card-title">{{ r.titulo }}</p>
+          
+          <h6 class="card-title">Categoria</h6>
+          <p class="card-text">{{ r.categoria }}</p>
+        
+   
+        <div class="container">
+          <h6 class="card-title " >Ingredientes</h6>
+          <p class="card-text">{{ r.ingrediente }}</p>
+          <h6 class="card-title" >Preparacion</h6>
+          <p class="card-text">{{ r.preparacion }}</p>
+          <h6 class="card-title">Nota</h6>
+          <p class="card-text">{{ r.nota }}</p>
+          <h6 class="card-title">Calificacion</h6>
+          <p class="card-text">{{ r.calificacion }}</p>
+        
+        </div>
+         
+        </div>
+        
+      </div>          
+  
+      
+        </div>
+   
+      
+  </div>  
+</div>

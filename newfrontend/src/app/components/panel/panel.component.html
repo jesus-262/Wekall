@@ -1,0 +1,153 @@
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+<br>
+
+
+    <!-- FORM -->
+    <div class="col-md-4 mx-auto">
+      <div class="col-md-4 mx-auto">
+
+        <h1>Recetario</h1>
+      </div>
+      
+      <div class="card">
+        
+        <div class="card-body p-4">
+  
+          <!-- FORM -->
+          <form #recetaForm="ngForm" (ngSubmit)="agregarreceta(recetaForm)" >
+            <!-- THE Id's Employee -->
+            <input type="hidden" [(ngModel)]="receta._id" #name="ngModel" name="_id"   >
+            
+            <div class="form-group" >
+              <input type="text" [(ngModel)]="receta.titulo"  #name="ngModel" name="titulo "   
+                placeholder="Titulo" class="form-control">
+            </div>
+            <label for=""></label>
+            <div class="form-group">
+              <div class="input-field col-s12">
+                <input type="text" name="descripcion "  [(ngModel)]="receta.descripcion"  #name="ngModel"
+                  placeholder="Descripcion" class="form-control">
+              </div>
+            </div>
+            <label for=""></label>
+            <div class="form-group">
+              <input type="text" name="imagen"  [(ngModel)]="receta.imagen"  #name="ngModel"
+                placeholder="Imagen" class="form-control">
+            </div>
+            <label for=""></label>
+            <div class="form-group">
+                <div class="input-field col-s12">
+                  <input type="text" name="preparacion" [(ngModel)]="receta.preparacion"  #name="ngModel"
+                    placeholder="Preparacion" class="form-control">
+                </div>
+              </div>
+              <label for=""></label>
+              <div class="form-group">
+                <div class="input-field col-s12">
+                  <input type="text" name="ingrediente" [(ngModel)]="receta.ingrediente"  #name="ngModel"
+                    placeholder="Ingrediente" class="form-control">
+                </div>
+              </div>
+              <label for=""></label>
+              <div class="form-group">
+                <div class="input-field col-s12">
+                  <input type="text" name="nota"  [(ngModel)]="receta.nota"  #name="ngModel"
+                    placeholder="Nota" class="form-control">
+                </div>
+              </div>
+             
+              <div class="input-field col s12 m6">
+                <label for=""></label>
+                <select class="form-select" aria-label="Default select example" name="categoria" [(ngModel)]="receta.categoria" required>
+                  <option value="" disabled selected>Categorias</option>
+                  <option selected value="Recetas de Arroz">Recetas de Arroz</option>
+                  <option value="Recetas de Bebidas">Recetas de Bebidas</option>
+                  <option value="Recetas de Carnes">Recetas de Carnes</option>
+                  <option value="Recetas de Dulces">Recetas de Dulces</option>
+                  <option value="Recetas de Ensaladas">Recetas de Ensaladas</option>
+                  <option value="Recetas de Mariscos">Recetas de Mariscos</option>
+                  <option value="Recetas de Guarniciones">Recetas de Guarniciones</option>
+                  <option value="Recetas de Legumbres y Cereales">Recetas de Legumbres y Cereales</option>
+                  <option value="Recetas de Pizzas">Recetas de Pizzas</option>
+                </select>
+             
+              
+            </div>
+              
+            <label for=""></label>
+
+            <div class="input-field col s12 m6">
+              <label for=""></label>
+              <select class="form-select" aria-label="Default select example" name="calificacion"  [(ngModel)]="receta.calificacion"  #name="ngModel">
+                <option value="0" disabled selected>Calificacion</option>
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+               
+              </select>
+           
+            
+          </div>
+           
+              <label for=""></label>
+              <div class="form-group">
+              <button class="btn btn-primary mr-2" (click)="resetForm(recetaForm)">Clean</button>
+            <button class="btn btn-secondary">Save</button></div>
+        </form>
+        
+      </div>
+    </div>
+
+  
+  <!-- TABLE -->
+ <br>
+ <br>
+ <div class="row" style="float: left;">   
+  <div class="card-group mt-3 " *ngFor="let r of this.mostarReceta | pipee; index as i "> 
+    
+    <div class="card text-center border-info"  >
+      <div class="card-body">
+        <img src="{{ r.imagen }} " class="card-img-top" style=" width: 200px; height: 200px; float: left;" >
+        <h1 class="card-title">Titulo </h1><p class="card-title">{{ r.titulo }}</p>
+        
+        <h6 class="card-title">Categoria</h6>
+        <p class="card-text">{{ r.categoria }}</p>
+      
+ 
+      <div class="container">
+        <h6 class="card-title " >Ingredientes</h6>
+        <p class="card-text">{{ r.ingrediente }}</p>
+        <h6 class="card-title" >Preparacion</h6>
+        <p class="card-text">{{ r.preparacion }}</p>
+        <h6 class="card-title">Nota</h6>
+        <p class="card-text">{{ r.nota }}</p>
+        <h6 class="card-title">Calificacion</h6>
+        <p class="card-text">{{ r.calificacion }}</p>
+      
+      </div>
+        <a   class="btn btn-secondary btn-sm " >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+          </svg>
+          <i class="bi bi-pencil" (click)="edictarrecetaslogeado(r)" >Editar</i>
+        </a>
+        <a  class="btn btn-danger btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+          </svg>
+          <i class="bi bi-pencil" (click)="eliminarrecetaslogeado(r._id)">Borrar</i>
+        </a>
+      </div>
+      
+    </div>          
+
+    
+      </div>
+ 
+    
+</div>  
+</div>

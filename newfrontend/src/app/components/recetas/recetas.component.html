@@ -1,0 +1,118 @@
+
+<br>
+<br>
+<div class="col-md-8 mx-auto">
+    <h1>Recetas</h1>
+  
+</div>
+<div class="col-md-8 mx-auto">
+  <h1>filtro</h1>
+  <div class="card-body p-4">
+  
+    <!-- FORM -->
+    <form #recetaForm="ngForm" (ngSubmit)="buscartitulo(recetaForm)" >
+      <!-- THE Id's Employee -->
+      <input type="hidden" [(ngModel)]="receta._id" #name="ngModel" name="_id"   >
+      
+      <div class="form-group" >
+        <input type="text" [(ngModel)]="receta.titulo"  #name="ngModel" name="titulo "   
+          placeholder="Titulo" class="form-control">
+      </div>
+      <label for=""></label>
+   
+  
+       
+        <label for=""></label>
+        <div class="form-group">
+       
+        <button class="btn btn-secondary">buscar</button>
+    </div>
+  </form>
+  <form #recetaFormm="ngForm" (ngSubmit)="buscarcategoria(recetaFormm)" >
+    <!-- THE Id's Employee -->
+    <input type="hidden" [(ngModel)]="receta._id" #name="ngModel" name="_id"   >
+    
+    
+    <label for=""></label>
+    <select class="form-select" aria-label="Default select example" name="receta.categoria" [(ngModel)]="categoria" required>
+      <option value="" disabled selected>Categorias</option>
+      <option selected value="Recetas de Arroz">Recetas de Arroz</option>
+      <option value="Recetas de Bebidas">Recetas de Bebidas</option>
+      <option value="Recetas de Carnes">Recetas de Carnes</option>
+      <option value="Recetas de Dulces">Recetas de Dulces</option>
+      <option value="Recetas de Ensaladas">Recetas de Ensaladas</option>
+      <option value="Recetas de Mariscos">Recetas de Mariscos</option>
+      <option value="Recetas de Guarniciones">Recetas de Guarniciones</option>
+      <option value="Recetas de Legumbres y Cereales">Recetas de Legumbres y Cereales</option>
+      <option value="Recetas de Pizzas">Recetas de Pizzas</option>
+    </select>
+    <label for=""></label>
+ 
+
+     
+      <label for=""></label>
+      <div class="form-group">
+     
+      <button class="btn btn-secondary">buscar</button>
+  </div>
+</form>
+<label for=""></label>
+<form #recetaFormm="ngForm" (ngSubmit)="buscaringrediente(recetaFormm)" >
+  <!-- THE Id's Employee -->
+  <input type="hidden" [(ngModel)]="receta._id" #name="ngModel" name="_id"   >
+  
+  <div class="form-group" >
+    <input type="text" [(ngModel)]="receta.ingrediente"  #name="ngModel" name="ingrediente "   
+      placeholder="Ingrediente" class="form-control">
+  </div>
+  <label for=""></label>
+
+
+   
+    <label for=""></label>
+    <div class="form-group">
+   
+    <button class="btn btn-secondary">buscar</button>
+</div>
+</form>
+</div>
+</div>
+
+<br>
+<br>
+<div class="col-md-8 mx-auto">
+    <table class="table table-striped">
+      <thead>
+        <th>Titulo</th>
+        <th>Descripcion</th>
+        <th>imagen</th>
+        <th>Preparacion</th>
+        <th>Ingrediente</th>
+        <th>Nota</th>
+        <th>calificacion</th>
+        
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of this.home | pipee; index as i ">
+            
+          <td>{{ r.titulo }}</td>
+          <td>{{ r.descripcion }}</td>
+          <td>{{ r.imagen }}</td>
+          <td>{{ r.preparacion }}</td>
+          <td>{{ r.ingrediente }}</td>
+          <td>{{ r.nota }}</td>
+          <td>{{ r.calificacion }}</td>
+          <td>
+            <a   class="btn btn-secondary btn-sm " >
+            
+              <i class="bi bi-pencil" (click)="like(r)" >Me gusta</i>
+            </a>
+           
+          </td>
+         <td></td>
+         <td></td>
+        
+        </tr> 
+      </tbody>
+    </table>
+  </div>
